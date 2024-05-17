@@ -18,17 +18,17 @@
   
   
   <title>PN2-ALBERT: A LITE BERT FOR SELF-SUPERVISEDLEARNING OF LANGUAGE REPRESENTATIONS | 王二木的博客</title>
-  <meta name="description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x7B14;&amp;#x8BB0;2&amp;#xFF0C;ALBERT&amp;#xFF0C;[&amp;#x539F;&amp;#x6587;]([1909.11942] ALBERT: A Lite BERT for Self-supervised Learning of Language Representations (arxiv.org))&amp;#x3002; &amp;#x6765;&amp;#x81EA">
+  <meta name="description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x7B14;&amp;#x8BB0;2&amp;#xFF0C;ALBERT&amp;#xFF0C;&amp;#x539F;&amp;#x6587;&amp;#x3002; &amp;#x6765;&amp;#x81EA;ICLR 2020&amp;#x3002; &amp;#x6982;&amp;#x8FF0;&amp;#x5728;BERT&amp;#x4E2D;&amp;#xFF0C;&amp;#x9884;&amp;#x8BAD;&amp;#x7EC3;&amp;#x9636;&amp;#x6BB5;&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PN2-ALBERT: A LITE BERT FOR SELF-SUPERVISEDLEARNING OF LANGUAGE REPRESENTATIONS">
 <meta property="og:url" content="http://example.com/2024/05/16/paperReading002/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x7B14;&amp;#x8BB0;2&amp;#xFF0C;ALBERT&amp;#xFF0C;[&amp;#x539F;&amp;#x6587;]([1909.11942] ALBERT: A Lite BERT for Self-supervised Learning of Language Representations (arxiv.org))&amp;#x3002; &amp;#x6765;&amp;#x81EA">
+<meta property="og:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x7B14;&amp;#x8BB0;2&amp;#xFF0C;ALBERT&amp;#xFF0C;&amp;#x539F;&amp;#x6587;&amp;#x3002; &amp;#x6765;&amp;#x81EA;ICLR 2020&amp;#x3002; &amp;#x6982;&amp;#x8FF0;&amp;#x5728;BERT&amp;#x4E2D;&amp;#xFF0C;&amp;#x9884;&amp;#x8BAD;&amp;#x7EC3;&amp;#x9636;&amp;#x6BB5;&amp;#">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2024/05/16/paperReading002/D:/code/hexoblog/source_posts/paperReading002/image-20240517131835985.png">
 <meta property="og:image" content="http://example.com/2024/05/16/paperReading002/D:/code/hexoblog/source_posts/paperReading002/image-20240517131920275.png">
 <meta property="article:published_time" content="2024-05-16T15:10:11.000Z">
-<meta property="article:modified_time" content="2024-05-17T08:06:47.894Z">
+<meta property="article:modified_time" content="2024-05-17T08:19:14.133Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2024/05/16/paperReading002/D:/code/hexoblog/source_posts/paperReading002/image-20240517131835985.png">
@@ -237,7 +237,7 @@
                 
               </p>
               <p class="item-title">
-                <a href="/2024/05/16/paperReading001/" class="title">PN1—BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a>
+                <a href="/2024/05/16/paperReading001/" class="title">PN1-BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a>
               </p>
               <p class="item-date">
                 <time datetime="2024-05-16T07:54:18.000Z" itemprop="datePublished">2024-05-16</time>
@@ -303,7 +303,7 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>&#x8BBA;&#x6587;&#x7B14;&#x8BB0;2&#xFF0C;ALBERT&#xFF0C;[&#x539F;&#x6587;]([<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.11942">1909.11942] ALBERT: A Lite BERT for Self-supervised Learning of Language Representations (arxiv.org)</a>)&#x3002; &#x6765;&#x81EA;ICLR 2020&#x3002;</p>
+        <p>&#x8BBA;&#x6587;&#x7B14;&#x8BB0;2&#xFF0C;ALBERT&#xFF0C;<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.11942">&#x539F;&#x6587;</a>&#x3002; &#x6765;&#x81EA;ICLR 2020&#x3002;</p>
 <h4 id="&#x6982;&#x8FF0;"><a href="#&#x6982;&#x8FF0;" class="headerlink" title="&#x6982;&#x8FF0;"></a>&#x6982;&#x8FF0;</h4><p>&#x5728;BERT&#x4E2D;&#xFF0C;&#x9884;&#x8BAD;&#x7EC3;&#x9636;&#x6BB5;&#x589E;&#x52A0;&#x6A21;&#x578B;&#x5927;&#x5C0F;&#x4F1A;&#x589E;&#x52A0;&#x4E0B;&#x6E38;&#x4EFB;&#x52A1;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x5E26;&#x6765;&#x7B97;&#x529B;&#x7684;&#x589E;&#x52A0;&#x3002;ALBERT&#x5C31;&#x662F;&#x57FA;&#x4E8E;&#x964D;&#x4F4E;BERT&#x7684;&#x5185;&#x5B58;&#x635F;&#x8017;&#x548C;&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#xFF0C;&#x5373;Lite Bert&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;ALBERT&#x7ED3;&#x5408;&#x4E86;&#x4E24;&#x79CD;&#x53C2;&#x6570;&#x7F29;&#x51CF;&#x6280;&#x672F;&#xFF0C;&#x4E00;&#x662F;&#x5206;&#x89E3;&#x5D4C;&#x5165;&#x53C2;&#x6570;&#x5316;&#xFF0C;&#x4E8C;&#x662F;&#x8DE8;&#x5C42;&#x53C2;&#x6570;&#x5171;&#x4EAB;&#x3002;&#x540C;&#x65F6;&#x8FD8;&#x5F15;&#x5165;&#x4E86;&#x53E5;&#x5B50;&#x987A;&#x5E8F;&#x9884;&#x6D4B;SOP&#x3002;</p>
 <h4 id="&#x67B6;&#x6784;"><a href="#&#x67B6;&#x6784;" class="headerlink" title="&#x67B6;&#x6784;"></a>&#x67B6;&#x6784;</h4><p>ALBERT&#x7684;&#x67B6;&#x6784;&#x8BBE;&#x7F6E;&#x4E0E;BERT&#x7C7B;&#x4F3C;&#xFF0C;&#x8BCD;&#x6C47;&#x5D4C;&#x5165;&#x5927;&#x5C0F;&#x8868;&#x793A;&#x4E3A; E&#xFF0C;&#x7F16;&#x7801;&#x5668;&#x5C42;&#x7684;&#x6570;&#x91CF;&#x8868;&#x793A;&#x4E3A; L&#xFF0C;&#x9690;&#x85CF;&#x5927;&#x5C0F;&#x8868;&#x793A;&#x4E3A; H&#x3002;feedfoward&#x5927;&#x5C0F;4H&#xFF0C;&#x6CE8;&#x610F;&#x529B;&#x5934;H/64&#x3002;</p>
 <p>&#x4E0B;&#x56FE;&#x662F;&#x4E8C;&#x8005;&#x8D85;&#x53C2;&#x6570;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
@@ -379,7 +379,7 @@
     
     
     <li class="next">
-      <a href="/2024/05/16/paperReading001/" title="PN1—BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2024/05/16/paperReading001/" title="PN1-BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
