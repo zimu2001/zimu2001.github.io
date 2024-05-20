@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>PN5-Parallel Instance Query Network for Named Entity Recognition | 王二木的博客</title>
+  <meta name="description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;NER&amp;#x7684;PIQN&amp;#x6846;&amp;#x67B6;&amp;#x3002;&amp;#x539F;&amp;#x6587;&amp;#xFF0C;&amp;#x6765;&amp;#x81EA;ACL 2022&amp;#x3002; &amp;#x6982;&amp;#x8FF0;&amp;#x672C;&amp;#x6587;&amp;#x63D0;&amp;#x51FA;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PN5-Parallel Instance Query Network for Named Entity Recognition">
+<meta property="og:url" content="http://example.com/2024/05/20/pn5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="&amp;#x8BBA;&amp;#x6587;&amp;#x9605;&amp;#x8BFB;&amp;#xFF0C;&amp;#x7528;&amp;#x4E8E;NER&amp;#x7684;PIQN&amp;#x6846;&amp;#x67B6;&amp;#x3002;&amp;#x539F;&amp;#x6587;&amp;#xFF0C;&amp;#x6765;&amp;#x81EA;ACL 2022&amp;#x3002; &amp;#x6982;&amp;#x8FF0;&amp;#x672C;&amp;#x6587;&amp;#x63D0;&amp;#x51FA;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520155847253.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520135557689.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520140037836.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520140747278.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520140950078.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520141317504.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520141414055.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520143654217.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520143836750.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520144101965.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520155301574.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520155344807.png">
+<meta property="og:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520155631074.png">
+<meta property="article:published_time" content="2024-05-20T03:36:26.000Z">
+<meta property="article:modified_time" content="2024-05-20T08:06:45.879Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/05/20/pn5/D:/code/hexoblog/source_posts/pn5/image-20240520155847253.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://example.com/2024/05/20/pn5/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="\source\images\favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zimu2001" target="_blank">
+          <img class="img-circle img-rotate" src="/images/logo.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">王二木</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Buaa Software Engineering</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Bei Jing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zimu2001" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BERT/" rel="tag">BERT</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BookNote/" rel="tag">BookNote</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DL/" rel="tag">DL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PaperNote/" rel="tag">PaperNote</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%85%AB%E8%82%A1/" rel="tag">八股</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E8%B7%AF/" rel="tag">计算机网路</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/BERT/" style="font-size: 13px;">BERT</a> <a href="/tags/BookNote/" style="font-size: 13px;">BookNote</a> <a href="/tags/DL/" style="font-size: 14px;">DL</a> <a href="/tags/NLP/" style="font-size: 13.67px;">NLP</a> <a href="/tags/PaperNote/" style="font-size: 13.33px;">PaperNote</a> <a href="/tags/%E5%85%AB%E8%82%A1/" style="font-size: 13px;">八股</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E8%B7%AF/" style="font-size: 13px;">计算机网路</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/20/PN7/" class="title">PN7-ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-20T08:21:55.000Z" itemprop="datePublished">2024-05-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/20/PN6/" class="title">PN6-A Unified MRC Framework for Named Entity Recognition</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-20T03:46:07.000Z" itemprop="datePublished">2024-05-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/20/pn5/" class="title">PN5-Parallel Instance Query Network for Named Entity Recognition</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-20T03:36:26.000Z" itemprop="datePublished">2024-05-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/18/pN4/" class="title">PN4-GloVe: Global Vectors for Word Representation</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-18T06:07:05.000Z" itemprop="datePublished">2024-05-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/05/18/paperReading003/" class="title">PN3-Linguistic Regularities in Continuous Space Word Representations</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-05-18T02:37:30.000Z" itemprop="datePublished">2024-05-18</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-pn5" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PN5-Parallel Instance Query Network for Named Entity Recognition
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/05/20/pn5/" class="article-date">
+	  <time datetime="2024-05-20T03:36:26.000Z" itemprop="datePublished">2024-05-20</time>
+	</a>
+</span>
+        
+        
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/05/20/pn5/#comments" class="article-comment-link">Comments</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>&#x8BBA;&#x6587;&#x9605;&#x8BFB;&#xFF0C;&#x7528;&#x4E8E;NER&#x7684;PIQN&#x6846;&#x67B6;&#x3002;<a target="_blank" rel="noopener" href="https://aclanthology.org/2022.acl-long.67/">&#x539F;&#x6587;</a>&#xFF0C;&#x6765;&#x81EA;ACL 2022&#x3002;</p>
+<h4><span id="x6982x8ff0">&#x6982;&#x8FF0;</span></h4><p>&#x672C;&#x6587;&#x63D0;&#x51FA;&#x4E86;&#x4E00;&#x79CD;&#x5E76;&#x884C;&#x5B9E;&#x4F53;&#x67E5;&#x8BE2;&#x6846;&#x67B6;&#xFF0C;&#x67E5;&#x8BE2;&#x4F5C;&#x4E3A;&#x53EF;&#x4EE5;&#x8BAD;&#x7EC3;&#x7684;&#x5411;&#x91CF;&#x5E76;&#x884C;&#x63D0;&#x53D6;&#x5B9E;&#x4F53;&#x3002;</p>
+<h4><span id="x6a21x578bx7ed3x6784">&#x6A21;&#x578B;&#x7ED3;&#x6784;</span></h4><p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520155847253.png" alt="image-20240520155847253"></p>
+<h5><span id="x8f93x5165">&#x8F93;&#x5165;</span></h5><p>&#x8F93;&#x5165;&#x7531;&#x4E24;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;n&#x4E2A;&#x5355;&#x8BCD;&#x7EC4;&#x6210;&#x7684;&#x53E5;&#x5B50;&#x5E8F;&#x5217;&#xFF0C;&#x5176;&#x4E2D;&#x5B9E;&#x4F53;&#x4F7F;&#x7528;&#x9996;&#x5C3E;&#x6307;&#x9488;&#x6807;&#x8BB0;&#x3002;&#x4EE5;&#x53CA;m&#x4E2A;&#x67E5;&#x8BE2;&#x7EC4;&#x6210;&#x7684;&#x67E5;&#x8BE2;&#x5E8F;&#x5217;&#xFF0C;&#x6BCF;&#x4E2A;&#x67E5;&#x8BE2;&#x63D0;&#x53D6;&#x4E00;&#x4E2A;&#x5B9E;&#x4F53;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x4E24;&#x4E2A;&#x5E8F;&#x5217;&#x8FDB;&#x884C;token&#xFF0C;position&#xFF0C;type&#x5D4C;&#x5165;&#x3002;&#x5D4C;&#x5165;&#x5411;&#x91CF;&#x957F;&#x4E3A;h&#x3002;&#x4E09;&#x90E8;&#x5206;&#x76F8;&#x52A0;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x3002;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520135557689.png" alt="image-20240520135557689"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type&#x5D4C;&#x5165;&#x9700;&#x8981;&#x5C06;&#x6807;&#x7B7E;&#x91CD;&#x590D;n&#x6B21;&#xFF0C;&#x6765;&#x5BF9;&#x9F50;&#x957F;&#x5EA6;&#x3002;</span><br></pre></td></tr></table></figure>
+
+<p>&#x672C;&#x6587;&#x4FEE;&#x6539;&#x4E86;&#x4F20;&#x7EDF;Attention&#x77E9;&#x9635;&#xFF0C;&#x4ECE;&#x800C;&#x9694;&#x79BB;&#x67E5;&#x8BE2;&#xFF08;&#x968F;&#x673A;&#x521D;&#x59CB;&#x5316;&#x7684;&#xFF09;&#x548C;&#x53E5;&#x5B50;&#x7684;&#x8BED;&#x4E49;&#x4EA4;&#x4E92;&#x3002;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520140037836.png" alt="image-20240520140037836"></p>
+<p>&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x63A9;&#x7801;&#x77E9;&#x9635;&#xFF0C;&#x53F3;&#x4E0A;&#x5B50;&#x77E9;&#x9635;&#x503C;&#x4E3A;-inf&#xFF0C;&#x5176;&#x4F59;&#x4E3A;0&#x3002;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x67E5;&#x8BE2;&#x53EF;&#x4EE5;&#x76F8;&#x4E92;&#x6CE8;&#x610F;&#xFF0C;&#x4EE5;&#x589E;&#x5F3A;&#x8BED;&#x4E49;&#x3002;</span><br></pre></td></tr></table></figure>
+
+<p>Encoder&#x540E;&#xFF0C;&#x518D;&#x901A;&#x8FC7;&#x4E24;&#x4E2A;bilstm&#x548C;l&#x989D;&#x5916;&#x7684;&#x53D8;&#x6362;&#x5668;&#x5C42;&#xFF0C;&#x5F97;&#x5230;&#x53E5;&#x5B50;&#x7F16;&#x7801;&#x548C;&#x67E5;&#x8BE2;&#x7F16;&#x7801;&#x3002;</p>
+<h5><span id="x9884x6d4b">&#x9884;&#x6D4B;</span></h5><p>&#x5B9E;&#x4F53;&#x67E5;&#x8BE2;&#x770B;&#x4F5C;&#x662F;&#x4F4D;&#x7F6E;&#x548C;&#x7C7B;&#x522B;&#x7684;&#x8054;&#x5408;&#x4EFB;&#x52A1;&#x3002;</p>
+<p>&#x4F4D;&#x7F6E;&#x9884;&#x6D4B;&#x901A;&#x8FC7;&#x9884;&#x6D4B;&#x5B9E;&#x4F53;&#x7684;&#x9996;&#x5C3E;&#x6307;&#x9488;&#x5B9E;&#x73B0;&#x3002;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520140747278.png" alt="image-20240520140747278"></p>
+<p>&#x5F97;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x878D;&#x5408;&#x8868;&#x793A;&#xFF08;&#x5411;&#x91CF;&#xFF09;&#x3002;</p>
+<p>&#x8BA1;&#x7B97;&#x53E5;&#x5B50;&#x7684;&#x7B2C; j &#x4E2A;&#x5355;&#x8BCD;&#x662F;&#x5DE6;&#x8FB9;&#x754C;&#x6216;&#x53F3;&#x8FB9;&#x754C;&#x7684;&#x6982;&#x7387;&#xFF1A;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520140950078.png" alt="image-20240520140950078"></p>
+<p>&#x5176;&#x4E2D;$\delta$&#x4E3A;l or r&#xFF0C;&#x4EE3;&#x8868;&#x5DE6;&#x53F3;&#x6307;&#x9488;&#x3002;&#x6700;&#x540E;&#x6240;&#x6709;&#x7EC4;&#x5408;&#x4E2D;&#x6982;&#x7387;&#x6700;&#x5927;&#x5BF9;&#x5E94;&#x7684;&#x5355;&#x8BCD;&#x5373;&#x5DE6;&#x53F3;&#x6307;&#x9488;&#x3002;</p>
+<p>&#x7C7B;&#x522B;&#x9884;&#x6D4B;</p>
+<p>&#x7B2C; i &#x4E2A;&#x5B9E;&#x4F8B;&#x67E5;&#x8BE2;&#x7684;&#x8FB9;&#x754C;&#x611F;&#x77E5;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x4E3A;&#xFF1A;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520141317504.png" alt="image-20240520141317504"></p>
+<p>&#x5C5E;&#x4E8E;&#x7C7B;&#x522B; c &#x7684;&#x7B2C; i &#x4E2A;&#x5B9E;&#x4F8B;&#x67E5;&#x8BE2;&#x67E5;&#x8BE2;&#x7684;&#x5B9E;&#x4F53;&#x7684;&#x6982;&#x7387;&#xFF1A;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520141414055.png" alt="image-20240520141414055"></p>
+<p>&#x6982;&#x7387;&#x6700;&#x5927;&#x7684;&#x6807;&#x7B7E;c&#x4E3A;&#x6700;&#x7EC8;&#x7C7B;&#x522B;&#x3002;</p>
+<h5><span id="lap">LAP</span></h5><p>&#x56E0;&#x4E3A;&#x67E5;&#x8BE2;&#x662F;&#x9690;&#x5F0F;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x63D0;&#x524D;&#x5206;&#x914D;&#x8BAD;&#x7EC3;&#x6807;&#x7B7E;&#x3002;&#x56E0;&#x6B64;&#x5728;&#x8BAD;&#x7EC3;&#x65F6;&#x52A8;&#x6001;&#x5206;&#x914D;&#x6807;&#x7B7E;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x7B2C;k&#x4E2A;&#x5B9E;&#x4F53;&#x5206;&#x914D;&#x4E2A;&#x7B2C;i&#x4E2A;&#x67E5;&#x8BE2;&#x7684;&#x6210;&#x672C;&#x5B9A;&#x4E49;&#x4E3A;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520143654217.png" alt="image-20240520143654217"></p>
+<p>&#x5206;&#x914D;&#x65F6;&#x4F7F;&#x5F97;&#x603B;&#x6210;&#x672C;&#x6700;&#x5C0F;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520143836750.png" alt="image-20240520143836750"></p>
+<p>A&#x662F;&#x5206;&#x914D;&#x77E9;&#x9635;&#xFF0C;&#x82E5;&#x7B2C;k&#x4E2A;&#x5B9E;&#x4F53;&#x5206;&#x914D;&#x4E2A;&#x7B2C;i&#x4E2A;&#x67E5;&#x8BE2;&#xFF0C;&#x5219;Aik=1&#x3002;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x901A;&#x8FC7;&#x5308;&#x7259;&#x5229;&#x7B97;&#x6CD5;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x77E9;&#x9635;&#x3002;&#x89C1;&#x9644;1&#x3002;</span><br></pre></td></tr></table></figure>
+
+<p>&#x95EE;&#x9898;&#x662F;&#x67E5;&#x8BE2;&#x6570;&#x91CF;&#x5927;&#x4E8E;&#x53EF;&#x5206;&#x914D;&#x5B9E;&#x4F53;&#x6570;&#x91CF;&#xFF0C;&#x5728;&#x77E9;&#x9635;&#x6700;&#x53F3;&#x6269;&#x5C55;&#x4E00;&#x5217;&#xFF0C;&#x5217;&#x5411;&#x91CF;&#x7684;&#x5143;&#x7D20;&#x6EE1;&#x8DB3;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520144101965.png" alt="image-20240520144101965"></p>
+<p>&#x8FD9;&#x6837;&#x6CA1;&#x6709;&#x88AB;&#x5206;&#x914D;&#x5230;&#x5B9E;&#x4F53;&#x7684;&#x67E5;&#x8BE2;&#x4E5F;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x7EDF;&#x4E00;&#x7684;&#x8868;&#x793A;&#xFF0C;&#x5373;&#x7B2C;i&#x884C;&#x7684;&#x6700;&#x540E;&#x4E00;&#x5217;&#x4E3A;1&#x3002;</p>
+<p>&#x6BCF;&#x4E00;&#x884C;&#x4E2D;&#x627E;&#x5230;&#x5143;&#x7D20;&#x4E3A;1&#x7684;&#x5217;&#x7D22;&#x5F15;&#xFF0C;&#x5373;&#x5B9E;&#x4F53;&#x6807;&#x7B7E;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x5C06;&#x8FD9;&#x4E9B;&#x7D22;&#x5F15;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x5411;&#x91CF;&#x3002;&#x8FD9;&#x6837;&#x4FBF;&#x5B8C;&#x6210;&#x4E86;&#x67E5;&#x8BE2;&#x4E0E;&#x5B9E;&#x4F53;&#x7684;&#x5339;&#x914D;&#x3002;</p>
+<h5><span id="loss">loss</span></h5><p>&#x5BF9;&#x4E8E;&#x5DE6;&#x53F3;&#x8FB9;&#x754C;&#x9884;&#x6D4B;&#xFF0C;&#x4F7F;&#x7528;&#x4E8C;&#x5143;&#x4EA4;&#x53C9;&#x71B5;&#x635F;&#x5931;&#x51FD;&#x6570;&#x3002;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520155301574.png" alt="image-20240520155301574"></p>
+<p>&#x5BF9;&#x4E8E;&#x5B9E;&#x4F53;&#x5206;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4EA4;&#x53C9;&#x71B5;&#x51FD;&#x6570;&#x3002;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520155344807.png" alt="image-20240520155344807"></p>
+<p>&#x770B;&#x8D77;&#x6765;&#x91CD;&#x5F71;&#x7684;1&#x662F;&#x4E00;&#x79CD;&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x5728;&#x4E2D;&#x62EC;&#x53F7;&#x5185;&#x7684;&#x8BED;&#x53E5;&#x4E3A;&#x771F;&#x65F6;&#x53D6;1&#xFF0C;&#x53CD;&#x4E4B;&#x53D6;0&#x3002;</p>
+<p>&#x5728;&#x6BCF;&#x4E2A;Transformer&#x540E;&#x9762;&#x90FD;&#x6DFB;&#x52A0;&#x4E8C;&#x8005;&#x7684;&#x9884;&#x6D4B;&#xFF0C;&#x5F97;&#x5230;&#x4E24;&#x4E2A;&#x635F;&#x5931;&#xFF0C;&#x8BAD;&#x7EC3;&#x96C6;D&#x4E0A;&#x7684;&#x603B;&#x635F;&#x5931;&#x4E3A;&#x3002;</p>
+<p><img src="/2024/05/20/pn5/D:\code\hexoblog\source_posts\pn5\image-20240520155631074.png" alt="image-20240520155631074"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x9884;&#x6D4B;&#x65F6;&#x53EA;&#x5728;&#x6700;&#x540E;&#x4E00;&#x5C42;&#x9884;&#x6D4B;&#x3002;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="x5b9ex9a8c">&#x5B9E;&#x9A8C;</span></h4><p>&#x7565;&#x3002;</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2024/05/20/pn5/" title="PN5-Parallel Instance Query Network for Named Entity Recognition" target="_blank" rel="external">http://example.com/2024/05/20/pn5/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zimu2001" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/logo.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zimu2001" target="_blank"><span class="text-dark">王二木</span><small class="ml-1x">Buaa Software Engineering</small></a></h3>
+        <div>北航软工在读</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/05/20/PN6/" title="PN6-A Unified MRC Framework for Named Entity Recognition"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/05/18/pN4/" title="PN4-GloVe: Global Vectors for Word Representation"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zimu2001" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '6ecd3155002616a17360',
+    clientSecret: '04894fcd6689a2bd707fb5eea609490277391c9f',
+    repo: 'myblog',
+    owner: 'zimu2001',
+    admin: [''],
+    id: md5(location.pathname),
+    distractionFreeMode: true,
+    language: 'zh-CN',
+    enableHotKey: 'true'
+  })
+  gitalk.render('comments')
+  </script>
+      
+
+
+
+
+
+
+
+</body>
+</html>
