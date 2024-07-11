@@ -18,17 +18,43 @@
   
   
   <title>GCN入门 | 王二木的博客</title>
-  <meta name="description" content="GCN&amp;#x7684;&amp;#x5165;&amp;#x95E8;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x53C2;&amp;#x8003;&amp;#x4E86;&amp;#x8FD9;&amp;#x91CC;&amp;#x3002;">
+  <meta name="description" content="GCN&amp;#x7684;&amp;#x5165;&amp;#x95E8;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x53C2;&amp;#x8003;&amp;#x4E86;&amp;#x8FD9;&amp;#x91CC;&amp;#x3002; convolution to graphCNN&amp;#x5728;&amp;#x7279;&amp;#x5F81;&amp;#x63D0;&amp;#x53D6;&amp;#x9886;&amp;#x57DF;&amp;#x53">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GCN入门">
 <meta property="og:url" content="http://example.com/2024/07/10/PN12/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="GCN&amp;#x7684;&amp;#x5165;&amp;#x95E8;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x53C2;&amp;#x8003;&amp;#x4E86;&amp;#x8FD9;&amp;#x91CC;&amp;#x3002;">
+<meta property="og:description" content="GCN&amp;#x7684;&amp;#x5165;&amp;#x95E8;&amp;#x535A;&amp;#x5BA2;&amp;#xFF0C;&amp;#x4E3B;&amp;#x8981;&amp;#x53C2;&amp;#x8003;&amp;#x4E86;&amp;#x8FD9;&amp;#x91CC;&amp;#x3002; convolution to graphCNN&amp;#x5728;&amp;#x7279;&amp;#x5F81;&amp;#x63D0;&amp;#x53D6;&amp;#x9886;&amp;#x57DF;&amp;#x53">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710122753896.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710123652644.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710123942163.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710124747369.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710125301898.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710125814728.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710160818094.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710160914120.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710163332632.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240710164427035.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711102820790.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711110502160.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711111258295.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711111630652.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711112229088.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711112504741.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711115145354.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711115323839.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711115406838.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711174129134.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711193600629.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711195346942.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711200009467.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711200419362.png">
+<meta property="og:image" content="http://example.com/2024/07/10/PN12/image-20240711202331812.png">
 <meta property="article:published_time" content="2024-07-10T03:34:42.000Z">
-<meta property="article:modified_time" content="2024-07-10T03:39:15.295Z">
+<meta property="article:modified_time" content="2024-07-11T12:26:00.363Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/07/10/PN12/image-20240710122753896.png">
   <!-- Canonical links -->
   <link rel="canonical" href="http://example.com/2024/07/10/PN12/index.html">
   
@@ -344,7 +370,125 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>GCN&#x7684;&#x5165;&#x95E8;&#x535A;&#x5BA2;&#xFF0C;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x4E86;&#x8FD9;&#x91CC;&#x3002;</p>
+        <p>GCN&#x7684;&#x5165;&#x95E8;&#x535A;&#x5BA2;&#xFF0C;&#x4E3B;&#x8981;&#x53C2;&#x8003;&#x4E86;<a target="_blank" rel="noopener" href="https://distill.pub/2021/understanding-gnns/">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<h3><span id="convolution-to-graph">convolution to graph</span></h3><p>CNN&#x5728;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x9886;&#x57DF;&#x5341;&#x5206;&#x5F3A;&#x5927;&#xFF0C;&#x800C;&#x56FE;&#x50CF;&#x672C;&#x8EAB;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;&#x5177;&#x6709;&#x975E;&#x5E38;&#x89C4;&#x5219;&#x7F51;&#x7EDC;&#x7ED3;&#x6784;&#x7684;&#x56FE;&#x5F62;&#xFF0C;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x5373;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x5C06;convolution&#x63A8;&#x5E7F;&#x81F3;&#x4EFB;&#x610F;&#x56FE;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240710122753896.png" alt="image-20240710122753896"></p>
+<h3><span id="polynomial-filters-x591ax9879x5f0fx6ee4x6ce2x5668">polynomial filters &#x591A;&#x9879;&#x5F0F;&#x6EE4;&#x6CE2;&#x5668;</span></h3><h4><span id="graph-laplacian">graph laplacian</span></h4><p>&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x56FE;&#x7684;&#x90BB;&#x63A5;&#x77E9;&#x9635;A&#xFF0C;&#x5BF9;&#x89D2;&#x5EA6;&#x77E9;&#x9635;D&#xFF0C;&#xFF08;Dii&#x7684;&#x503C;&#x662F;&#x7B2C;i&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x90BB;&#x63A5;&#x8FB9;&#x6570;&#x91CF;&#xFF09;&#x3002;&#x56FE;&#x7684;laplacain&#x77E9;&#x9635;&#x5B9A;&#x4E49;&#x4E3A; L = D - A&#x3002;&#x5982;&#x4E0B;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240710123652644.png" alt="image-20240710123652644"></p>
+<p>&#x53EF;&#x89C1;&#xFF0C;laplacain&#x77E9;&#x9635;&#x4EC5;&#x4F9D;&#x8D56;&#x4E8E;&#x56FE;&#x7684;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#xFF0C;&#x800C;&#x4E0E;&#x8282;&#x70B9;&#x7279;&#x5F81;&#x65E0;&#x5173;&#x3002;</p>
+<h4><span id="polynomials-of-the-laplacian">Polynomials of the Laplacian</span></h4><p>&#x6784;&#x9020;&#x5982;&#x4E0B;&#x7684;laplacian&#x591A;&#x9879;&#x5F0F;</p>
+<p><img src="/2024/07/10/PN12/image-20240710123942163.png" alt="image-20240710123942163"></p>
+<p>L&#x5373;laplacian&#x77E9;&#x9635;&#xFF0C;&#x5176;&#x5E42;&#x6B21;&#x77E9;&#x9635;&#x4E0E;&#x672C;&#x8EAB;&#x5F62;&#x72B6;&#x76F8;&#x540C;&#x3002;&#x5982;&#x4E0A;&#x7684;&#x591A;&#x9879;&#x5F0F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5411;&#x91CF; **w **&#x8868;&#x793A;&#xFF0C;&#x5176;&#x6BCF;&#x4E2A;&#x7EF4;&#x5EA6;&#x7684;&#x503C;&#x5BF9;&#x5E94;&#x6BCF;&#x4E00;&#x9879;&#x7684;&#x7CFB;&#x6570;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x591A;&#x9879;&#x5F0F;&#x53EF;&#x88AB;&#x89C6;&#x4F5C;&#x201C;&#x6EE4;&#x6CE2;&#x5668;&#x201D;&#xFF0C;&#x800C; <strong>w</strong> &#x662F;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x6743;&#x91CD;&#x3002;</p>
+<p>&#x5C06;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x7EC4;&#x5408;&#x4E3A;&#x8282;&#x70B9;&#x7279;&#x5F81;&#x77E9;&#x9635; <strong>x</strong> &#xFF0C;&#x5B9A;&#x4E49;&#x5176;&#x4E8E;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x5377;&#x79EF;</p>
+<p><img src="/2024/07/10/PN12/image-20240710124747369.png" alt="image-20240710124747369"></p>
+<p>&#x82E5;w0=1&#xFF0C;wi=0&#xFF0C;x&#x2018;=x&#x3002;</p>
+<p>&#x82E5;w1=1&#xFF0C;wi=0&#xFF0C;x&#x2019;=Lx&#xFF0C;&#x53EF;&#x89C1;&#xFF0C;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x7279;&#x5F81;&#x4E0E;&#x5176;&#x76F4;&#x63A5;&#x90BB;&#x5C45;&#x7279;&#x5F81;&#x76F8;&#x7ED3;&#x5408;&#x3002;</p>
+<p>L&#x77E9;&#x9635;&#x6709;&#x7740;&#x5982;&#x4E0B;&#x7684;&#x89C4;&#x5F8B;</p>
+<p><img src="/2024/07/10/PN12/image-20240710125301898.png" alt="image-20240710125301898"></p>
+<p>&#x5373;&#x5982;&#x679C;&#x5C06; <strong>x</strong> &#x4E0E;&#x6B21;&#x6570;&#x4E3A;d&#x7684;&#x591A;&#x9879;&#x5F0F;&#x8FDB;&#x884C;&#x5377;&#x79EF;&#xFF0C;</p>
+<p><img src="/2024/07/10/PN12/image-20240710125814728.png" alt="image-20240710125814728"></p>
+<p>&#x5373;&#x8282;&#x70B9;&#x7684;&#x5377;&#x79EF;&#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x4E0E;&#x4E0D;&#x8D85;&#x8FC7;d&#x6B65;&#x8DDD;&#x79BB;&#x7684;&#x8282;&#x70B9;&#x5173;&#x8054;&#xFF0C;&#x53EF;&#x89C1;&#x6EE4;&#x6CE2;&#x5668;&#x662F;&#x5C40;&#x90E8;&#x7684;&#xFF0C;&#x5C40;&#x90E8;&#x7684;&#x7A0B;&#x5EA6;&#x5B8C;&#x5168;&#x7531;d&#x51B3;&#x5B9A;&#x3002;</p>
+<h4><span id="chebnet">chebNet</span></h4><p>chebNet&#x5BF9;polynomial filters &#x8FDB;&#x884C;&#x4E86;&#x6539;&#x8FDB;&#xFF0C;&#x5176;&#x591A;&#x9879;&#x5F0F;&#x5F62;&#x5F0F;&#x5982;&#x4E0B;</p>
+<p><img src="/2024/07/10/PN12/image-20240710160818094.png" alt="&#xB7;"></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;Ti &#x662F;&#x7B2C; i &#x9636;&#x7684;&#x7B2C;&#x4E00;&#x7C7B;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x591A;&#x9879;&#x5F0F;&#xFF0C;&#x800C; L~ &#x662F;&#x4F7F;&#x7528; L &#x7684;&#x6700;&#x5927;&#x7279;&#x5F81;&#x503C;&#x5B9A;&#x4E49;&#x7684;&#x5F52;&#x4E00;&#x5316;&#x62C9;&#x666E;&#x62C9;&#x65AF;&#x7B97;&#x5B50;&#xFF1A;</p>
+<p><img src="/2024/07/10/PN12/image-20240710160914120.png" alt="image-20240710160914120"></p>
+<p>why &#x8BBE;&#x8BA1;like this&#xFF1F;</p>
+<ul>
+<li>L&#x662F;&#x534A;&#x6B63;&#x5B9A;&#x7684;&#x2014;&#x2014;&#x5176;&#x6240;&#x6709;&#x7279;&#x5F81;&#x503C;&#x90FD;&#x4E0D;&#x5C0F;&#x4E8E;0&#x3002;&#x5982;&#x679C;L&#x7684;&#x6700;&#x5927;&#x7279;&#x5F81;&#x503C;&#x5927;&#x4E8E;1&#xFF0C;&#x5176;&#x591A;&#x6B21;&#x5E42;&#x77E9;&#x9635;&#x7684;&#x9879;&#x4F1A;&#x5F88;&#x5927;&#x3002; L~ &#x76F8;&#x5F53;&#x4E8E;&#x505A;&#x4E86;&#x653E;&#x7F29;&#xFF0C;&#x5176;&#x7279;&#x5F81;&#x503C;&#x7EDD;&#x5BF9;&#x503C;&#x90FD;&#x5C0F;&#x4E8E;1&#x3002;&#x4ECE;&#x800C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x9009;&#x62E9;&#x9AD8;&#x9636;&#x7CFB;&#x6570;&#x5728;&#x76F8;&#x540C;&#x7684;&#x989C;&#x8272;&#x5C3A;&#x5EA6;&#x4E0A;&#x663E;&#x793A;&#x7ED3;&#x679C; <strong>x&#x2018;</strong>&#x3002;</li>
+<li>&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x591A;&#x9879;&#x5F0F;&#x4F7F;&#x5F97;&#x63D2;&#x503C;&#x66F4;&#x5177;&#x6570;&#x503C;&#x7A33;&#x5B9A;&#x6027;&#x3002;&#xFF08;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x8FD9;&#x91CC;&#xFF1A; <strong>Chebyshev Polynomials</strong> &#xFF09;</li>
+</ul>
+<h4><span id="x8282x70b9x5b9ax4ef7x6027">&#x8282;&#x70B9;&#x5B9A;&#x4EF7;&#x6027;</span></h4><p>&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#x591A;&#x9879;&#x5F0F;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x4E0E;&#x8282;&#x70B9;&#x987A;&#x5E8F;&#x6539;&#x53D8;&#x65E0;&#x5173;&#x3002;&#x5373;&#x5176;&#x662F;&#x8282;&#x70B9;&#x5E8F;&#x5217;&#x7B49;&#x53D8;&#x7684;&#x3002;</p>
+<h4><span id="embedding-computation">embedding computation</span></h4><p>&#x73B0;&#x5C06;&#x5982; chebNet &#x7684;&#x591A;&#x9879;&#x5F0F;&#x4E0E;&#x975E;&#x7EBF;&#x6027;&#x5C42;&#x5806;&#x53E0;&#x6765;&#x6784;&#x5EFA; GNN &#xFF0C;&#x5047;&#x8BBE;&#x6709;k&#x4E2A;&#x4E0D;&#x540C;&#x7684; filter &#x5C42;&#xFF0C;&#x4ED6;&#x4EEC;&#x6709;&#x7740;&#x5404;&#x81EA;&#x7684;&#x6743;&#x91CD; <strong>w_k</strong>&#x3002;&#x8BA1;&#x7B97;&#x5982;&#x4E0B;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240710163332632.png" alt="image-20240710163332632"></p>
+<p>&#x53EF;&#x89C1;&#xFF0C;&#x5728;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x7684;&#x6EE4;&#x6CE2;&#x5668;&#x6743;&#x91CD;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x8FD9;&#x548C;CNN&#x662F;&#x76F8;&#x4F3C;&#x7684;&#x3002;</p>
+<h3><span id="x73b0x4ee3gnn">&#x73B0;&#x4EE3;GNN</span></h3><p>&#x5728;&#x4E4B;&#x524D;&#x63D0;&#x5230;&#x7684; polynomial kernel &#x4E2D;&#xFF0C;</p>
+<p><img src="/2024/07/10/PN12/image-20240710164427035.png" alt="image-20240710164427035"></p>
+<p>&#x5176;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F;&#x4E24;&#x4E2A;&#x6B65;&#x9AA4;&#x4EA7;&#x751F;&#x7684;&#xFF1A;&#x4E0E;&#x8282;&#x70B9;&#x672C;&#x8EAB;&#x7279;&#x5F81;&#x7ED3;&#x5408; + aggregate &#x90BB;&#x5C45;&#x8282;&#x70B9;&#x7684;&#x7279;&#x5F81;&#x3002;</p>
+<p>&#x8003;&#x8651;&#x4E0D;&#x540C;&#x7684;<strong>&#x7ED3;&#x5408;</strong> &#x548C; <strong>&#x805A;&#x5408;</strong>&#x6B65;&#x9AA4;&#xFF1F;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x540C;&#x65F6;&#x8981;&#x4FDD;&#x8BC1;convolution&#x662F;&#x8282;&#x70B9;&#x987A;&#x5E8F;&#x7B49;&#x53D8;&#x7684;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;aggregate&#x662F;&#x8282;&#x70B9;&#x987A;&#x5E8F;&#x7B49;&#x53D8;&#x7684;&#x6765;&#x5B9E;&#x73B0;&#x3002;</span><br></pre></td></tr></table></figure>
+
+<p>convolution &#x53EF;&#x4EE5;&#x770B;&#x4F5C;&#x662F; message passing &#xFF0C;&#x91CD;&#x590D;&#x8FDB;&#x884C;1-hop&#x7684;convolution k&#x6B21;&#xFF0C;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x5230;k-hop&#x5185;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x4FE1;&#x606F;&#x3002;</p>
+<p>message passing &#x662F;&#x5F88;&#x591A;GNN&#x67B6;&#x6784;&#x7684;&#x6838;&#x5FC3;&#x3002;</p>
+<h4><span id="gcn">GCN</span></h4><p><strong>Semi-Supervised Classification with Graph Convolutional Networks</strong></p>
+<h4><span id="gat">GAT</span></h4><p><strong>Graph Attention Networks</strong></p>
+<h4><span id="graphsage">GraphSAGE</span></h4><p><strong>Inductive Representation Learning on Large Graphs</strong> </p>
+<h4><span id="gin">GIN</span></h4><p><strong>How Powerful are Graph Neural Networks?</strong></p>
+<p>&#x535A;&#x5BA2;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x7F51;&#x7EDC;&#x53EF;&#x89C6;&#x5316;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x8C03;&#x6574;&#x56FE;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#x4E0E;&#x53C2;&#x6570;&#xFF0C;&#x53C2;&#x8003;<a target="_blank" rel="noopener" href="https://distill.pub/2021/understanding-gnns/#:~:text=this%20section%20apply.-,Interactive%20Graph%20Neural%20Networks,but%20the%20same%20equations%20hold%20when%20the%20node%20features%20are%20vectors.,-GCN">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<h3><span id="convolutionxff1alocal-to-global">Convolution&#xFF1A;Local to Global</span></h3><p>&#x4E4B;&#x524D;&#x6240;&#x4ECB;&#x7ECD;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x53EA;&#x5C40;&#x9650;&#x5728;&#x5C40;&#x90E8;&#x5377;&#x79EF;&#xFF0C;&#x867D;&#x7136;&#x7279;&#x5F81;&#x80FD;&#x901A;&#x8FC7;&#x6267;&#x884C;&#x591A;&#x6B21;&#x5377;&#x79EF;&#x6765;&#x4F20;&#x9012;&#x5230;&#x66F4;&#x8FDC;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x4F46;&#x662F;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x4ECB;&#x7ECD;&#x4E00;&#x79CD;global convolution&#xFF08;&#x5168;&#x5C40;&#x5377;&#x79EF;&#xFF09;&#x3002;<strong>Spectral Networks and Locally Connected Networks on Graphs</strong></p>
+<h4><span id="spectral-convolutionsx5149x8c31x5377x79ef">spectral convolutions&#x5149;&#x8C31;&#x5377;&#x79EF;</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x63D0;&#x524D;&#x8BF4;&#x660E;&#xFF0C;&#x8282;&#x70B9;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF08;feature vector&#xFF09;&#x6307;&#x80FD;&#x591F;&#x8868;&#x793A;&#x8282;&#x70B9;&#x7279;&#x5F81;&#x7684;&#x5D4C;&#x5165;&#x5411;&#x91CF;&#xFF0C;&#x4E0E;&#x77E9;&#x9635;&#x7279;&#x5F81;&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#xFF08;eigenvectors&#xFF09;&#x6709;&#x5F02;&#x3002;&#x4E4B;&#x540E;&#x7684;&#x53D9;&#x8FF0;&#x4E0D;&#x4F1A;&#x4E25;&#x683C;&#x533A;&#x5206;&#x4E8C;&#x8005;&#x7684;&#x4E2D;&#x6587;&#x8868;&#x8FBE;&#x3002;</span><br></pre></td></tr></table></figure>
+
+<p>&#x4EE5;&#x6807;&#x91CF;&#x4E3A;&#x4F8B;&#xFF0C;&#x5047;&#x8BBE;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x7279;&#x5F81;&#x8868;&#x793A;&#x4E3A; xi &#xFF0C;&#x6240;&#x6709;&#x8282;&#x70B9;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x7EC4;&#x5408;&#x4E3A;&#x7279;&#x5F81;&#x5411;&#x91CF; X &#xFF08;&#x5E38;&#x89C4;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x77E9;&#x9635;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x53EA;&#x8003;&#x8651;&#x4E00;&#x7EF4;&#x7684;&#x8282;&#x70B9;&#x7279;&#x5F81;&#xFF09;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x89C4;&#x8303;&#x5316;&#xFF08;&#x4F7F;&#x5411;&#x91CF;&#x7684;&#x5404;&#x7EF4;&#x5EA6;&#x503C;&#x5E73;&#x65B9;&#x548C;&#x4E3A;1&#xFF09;&#x3002;&#x5B9A;&#x4E49;</p>
+<p><img src="/2024/07/10/PN12/image-20240711102820790.png" alt="image-20240711102820790"></p>
+<p>&#x53EF;&#x89C1;&#xFF0C;&#x5BF9;&#x4E8E;&#x90BB;&#x63A5;&#x8282;&#x70B9;&#x5206;&#x914D;&#x8F83;&#x5C0F;&#x7279;&#x5F81;&#x8868;&#x793A;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x4F1A;&#x4F7F;&#x5F97;Lx&#x503C;&#x8F83;&#x5C0F;&#x3002;</p>
+<p>L&#x662F;&#x4E00;&#x4E2A;&#x5B9E;&#x5BF9;&#x79F0;&#x9635;&#xFF0C;&#x5373;&#x5176;&#x6709;n&#x4E2A;&#x5B9E;&#x6570;&#x7279;&#x5F81;&#x503C;&#xFF0C;&#x5E76;&#x4E14;&#x7279;&#x5F81;&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x53EF;&#x4EE5;&#x6B63;&#x4EA4;&#x5F52;&#x4E00;&#x5316;&#xFF08;&#x7EC4;&#x6210;&#x6B63;&#x4EA4;&#x5355;&#x4F4D;&#x9635;&#xFF09;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x8BC1;&#x660E;&#x7684;&#x662F;&#xFF0C;&#x968F;&#x7740;&#x7279;&#x5F81;&#x503C;&#x589E;&#x52A0;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x53D8;&#x5F97;&#x4E0D;&#x5E73;&#x6ED1;&#x3002;&#x5E73;&#x6ED1;&#xFF0C;&#x6307;&#x5411;&#x91CF;&#x4E2D;&#x7684;&#x7EAC;&#x5EA6;&#x503C;&#x53D8;&#x5316;&#x8F83;&#x5C0F;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240711110502160.png" alt="image-20240711110502160"></p>
+<p>&#x5C06;&#x8FD9;&#x7EC4;L&#x7684;&#x7279;&#x5F81;&#x503C;&#x79F0;&#x4E3A; spectral &#xFF08;&#x8C31;&#xFF09;&#x3002;&#x5C06;L&#x7684;&#x5149;&#x8C31;&#x5206;&#x89E3;&#x8868;&#x793A;&#x4E3A;&#x3002;&#xFF08;&#x5B9E;&#x5BF9;&#x79F0;&#x9635;&#x7684;&#x76F8;&#x4F3C;&#x5BF9;&#x89D2;&#x5316;&#xFF09;</p>
+<p><img src="/2024/07/10/PN12/image-20240711111258295.png" alt="image-20240711111258295"></p>
+<p>&#x5176;&#x4E2D; &#x39B; &#x662F;&#x7279;&#x5F81;&#x503C;&#x6309;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x987A;&#x5E8F;&#x4F9D;&#x6B21;&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x6392;&#x5217;&#x5728;&#x5BF9;&#x89D2;&#x7EBF;&#x4E0A;&#x7EC4;&#x6210;&#x7684;&#x5BF9;&#x89D2;&#x77E9;&#x9635;&#xFF0C;U &#x662F;&#x5BF9;&#x5E94;&#x987A;&#x5E8F;&#x7684;&#x7279;&#x5F81;&#xFF08;&#x5217;&#xFF09;&#x5411;&#x91CF;&#x7EC4;&#x6210;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x77E9;&#x9635;&#x3002;&#x5982;&#x4E0B;&#xFF0C;&#x5176;&#x4E2D; &#x1D706;1&#x2264;&#x2026;&#x2264;&#x1D706;&#x1D45B;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240711111630652.png" alt="image-20240711111630652"></p>
+<p>&#x7279;&#x5F81;&#x5411;&#x91CF; ui &#x7EC4;&#x6210;&#x7684; U &#x5373;&#x5355;&#x4F4D;&#x6B63;&#x4EA4;&#x9635;&#xFF0C;&#x6EE1;&#x8DB3; U<strong>^T</strong> U = I  &#x3002;&#x540C;&#x65F6; ui &#x4E5F;&#x662F; n &#x7EF4;&#x5411;&#x91CF;&#x7A7A;&#x95F4;&#x7684;&#x4E00;&#x7EC4;&#x57FA;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5176;&#x7EBF;&#x6027;&#x7EC4;&#x5408;&#x8868;&#x8FBE;&#x7A7A;&#x95F4;&#x4E2D;&#x4EFB;&#x610F;&#x5411;&#x91CF; x &#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240711112229088.png" alt="image-20240711112229088"></p>
+<p>&#x5176;&#x4E2D; x^ &#x662F;&#x7CFB;&#x6570;&#x7EC4;&#x6210;&#x7684;&#x5411;&#x91CF;&#xFF0C;&#x79F0;&#x4E3A;&#x8282;&#x70B9;&#x7279;&#x5F81;&#x5411;&#x91CF; x &#x7684;<strong>&#x5149;&#x8C31;&#x8868;&#x793A;</strong>&#x3002;&#x7531; U &#x7684;&#x6027;&#x8D28;&#x53EF;&#x77E5;</p>
+<p><img src="/2024/07/10/PN12/image-20240711112504741.png" alt="image-20240711112504741"></p>
+<p>&#x4E0A;&#x5F0F;&#x63D0;&#x4F9B;&#x4E86; n &#x7EF4;&#x7A7A;&#x95F4;&#x7684;&#x4EFB;&#x610F;&#x5411;&#x91CF;&#x81EA;&#x7136;&#x8868;&#x793A;&#x548C;&#x5149;&#x8C31;&#x8868;&#x793A;&#x7684;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4><span id="spectral-representations-of-natural-images">Spectral Representations of Natural Images</span></h4><p>&#x5C0F;&#x5B69;&#x90FD;&#x77E5;&#x9053;&#xFF0C;&#x56FE;&#x50CF;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x56FE;&#x7ED3;&#x6784;&#xFF0C;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x5176;&#x90BB;&#x5C45;&#x8282;&#x70B9;&#x7684;&#x4E2A;&#x6570;&#xFF08;3&#xFF0C;5&#xFF0C;8&#xFF09;&#x56E0;&#x4E2D;&#x5FC3;&#x8282;&#x70B9;&#x7684;&#x4F4D;&#x7F6E;&#x800C;&#x5F02;&#x3002;&#x5982;&#x679C;&#x56FE;&#x50CF;&#x662F;&#x7070;&#x5EA6;&#x56FE;&#xFF0C;&#x8282;&#x70B9;&#x7684;&#x503C;&#x662F;&#x4E00;&#x4E2A;&#x8868;&#x793A;&#x50CF;&#x7D20;&#x9ED1;&#x6697;&#x7A0B;&#x5EA6;&#x7684;&#x5B9E;&#x6570;&#x3002;&#x5982;&#x679C;&#x662F;&#x5F69;&#x8272;&#xFF0C;&#x6BCF;&#x4E2A;&#x503C;&#x5C06;&#x662F;&#x4E00;&#x4E2A;3&#x7EF4;&#x5411;&#x91CF;&#xFF0C;&#x5373;&#xFF08;RGB&#xFF09;&#x901A;&#x9053;&#x503C;&#x3002;</p>
+<p>&#x5BF9;&#x56FE;&#x50CF;&#x7684;&#x6BCF;&#x4E2A;&#x901A;&#x9053;&#x505A;&#x5982;&#x4E0B;&#x5B9E;&#x9A8C;&#xFF1A;</p>
+<ul>
+<li><p>&#x5C06;&#x67D0;&#x901A;&#x9053;&#x6240;&#x6709;&#x50CF;&#x7D20;&#x503C;&#x7EC4;&#x6210; feature vector x &#x3002;</p>
+</li>
+<li><p>&#x83B7;&#x5F97;&#x5176;&#x9891;&#x8C31;&#x8868;&#x793A; x^</p>
+<p><img src="/2024/07/10/PN12/image-20240711115145354.png" alt="image-20240711115145354"></p>
+</li>
+<li><p>&#x622A;&#x65AD;&#x5230;&#x524D;m&#x5404;&#x5206;&#x91CF;&#xFF0C;&#x5373;&#x628A;&#x540E; n - m &#x4E2A;&#x5206;&#x91CF;&#x7F6E;&#x96F6;&#x3002;&#x8FD9;&#x7B49;&#x6548;&#x4E8E;&#x4EC5;&#x4F7F;&#x7528;&#x524D; m &#x4E2A; eigenvectors &#x8FDB;&#x884C;&#x8BA1;&#x7B97;</p>
+<p><img src="/2024/07/10/PN12/image-20240711115323839.png" alt="image-20240711115323839"></p>
+</li>
+<li><p>&#x8F6C;&#x56DE;&#x5176;&#x81EA;&#x7136;&#x5411;&#x91CF;</p>
+<p><img src="/2024/07/10/PN12/image-20240711115406838.png" alt="image-20240711115406838"></p>
+</li>
+</ul>
+<p>&#x4F7F;&#x7528; xm &#x91CD;&#x5EFA;&#x56FE;&#x50CF;&#x3002;&#x535A;&#x5BA2;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x56FE;&#x50CF;&#x968F;m&#x53D8;&#x5316;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x5448;&#x73B0;&#xFF0C;&#x70B9;&#x51FB;<a target="_blank" rel="noopener" href="https://distill.pub/2021/understanding-gnns/#:~:text=each%20channel%20exactly.-,Sample%20Image,-Chicken">&#x8FD9;&#x91CC;</a>&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x7684;&#x7ED3;&#x8BBA;&#x662F;&#xFF1A;&#x5BF9;&#x4E8E;&#x4EFB;&#x4F55;&#x56FE;&#x50CF; x &#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x5149;&#x8C31;&#x8868;&#x793A; x^ &#x7684;&#x521D;&#x59CB;&#x9879;&#x6355;&#x6349;&#x5230;&#x4E86;&#x5168;&#x5C40;&#x8303;&#x56F4;&#x5185;&#x7684;&#x8D8B;&#x52BF;&#xFF0C;&#x5373;&#x4F4E;&#x9891;&#x6210;&#x5206;&#xFF0C;&#x800C;&#x540E;&#x6765;&#x7684;&#x76F8;&#x6CFD;&#x6355;&#x6349;&#x5230;&#x4E86;&#x5C40;&#x90E8;&#x4E0A;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x5373;&#x9AD8;&#x9891;&#x6210;&#x5206;&#x3002;</p>
+<h4><span id="embedding-computation">embedding computation</span></h4><p>&#x5047;&#x8BBE;&#x7F51;&#x7EDC;&#x6709;k&#x5C42;&#xFF0C;&#x6BCF;&#x4E00;&#x5C42;&#x90FD;&#x6709;&#x53EF;&#x5B66;&#x7CFB;&#x7684;&#x53C2;&#x6570;w&#xFF0C;&#x5373;&#x6EE4;&#x6CE2;&#x5668;&#x6743;&#x91CD;&#xFF0C;&#x8FD9;&#x4E9B;&#x6743;&#x91CD;&#x4E0E;&#x8282;&#x70B9;&#x7279;&#x5F81;&#x7684;&#x8C31;&#x8868;&#x793A;&#x8FDB;&#x884C;&#x5377;&#x79EF;&#xFF0C;&#x7531;&#x4E4B;&#x524D;&#x7684;&#x8BA8;&#x8BBA;&#x53EF;&#x77E5;&#xFF0C;&#x6743;&#x91CD;&#x6570;&#x91CF;&#x8981;&#x7B49;&#x4E8E;&#x8BA1;&#x7B97;&#x8C31;&#x8868;&#x793A;&#x7684;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x6570;&#x91CF;&#x3002;<em>&#x6B64;&#x5916;&#xFF0C;&#x7531;&#x4E8E;&#x62C9;&#x666E;&#x62C9;&#x65AF;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x5728;&#x56FE;&#x4E0A;&#x7684;&#x5E73;&#x6ED1;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x8C31;&#x8868;&#x793A;&#x81EA;&#x52A8;&#x4E3A;&#x76F8;&#x90BB;&#x8282;&#x70B9;&#x83B7;&#x53D6;&#x76F8;&#x4F3C;&#x8868;&#x793A;&#x5F3A;&#x52A0;&#x4E86;&#x5F52;&#x7EB3;&#x504F;&#x7F6E;&#x3002;&#xFF08;&#xFF1F;&#xFF09;</em></p>
+<p>&#x4ECD;&#x5047;&#x8BBE;&#x8282;&#x70B9;&#x7279;&#x5F81;&#x662F;&#x4E00;&#x7EF4;&#x7684;&#xFF0C;&#x6BCF;&#x5C42;&#x7684;&#x8F93;&#x51FA;&#x90FD;&#x662F;&#x8282;&#x70B9;&#x8868;&#x793A;&#x7684;&#x5411;&#x91CF;&#x4F5C;&#x4E3A;&#x884C;&#x7EC4;&#x6210;&#x7684;&#x77E9;&#x9635; h&#xFF08;k&#xFF09;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240711174129134.png" alt="image-20240711174129134"></p>
+<p>&#x4E3A;&#x8282;&#x70B9;&#x5B9A;&#x4E49;&#x987A;&#x5E8F;&#xFF0C;&#x4ECE;&#x800C;&#x5F97;&#x5230; L &#x77E9;&#x9635;&#xFF0C;&#x8BA1;&#x7B97;&#x5176;&#x7279;&#x5F81;&#x5411;&#x91CF;&#x77E9;&#x9635; Um &#x3002;embedding computation&#x8BA1;&#x7B97;&#x5982;&#x4E0B;&#x3002;</p>
+<p><img src="/2024/07/10/PN12/image-20240711193600629.png" alt="image-20240711193600629"></p>
+<h4><span id="x518dx8c08spectral-convolution">&#x518D;&#x8C08;spectral convolution</span></h4><p>&#x4E0E; laplacian filter &#x7C7B;&#x4F3C;&#xFF0C;spectral convolution&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x8BC1;&#x660E;&#x662F;&#x8282;&#x70B9;&#x987A;&#x5E8F;&#x7B49;&#x53D8;&#x7684;&#xFF0C;&#x5373;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x987A;&#x5E8F;&#x7684;&#x8F93;&#x5165;&#x4F1A;&#x5F97;&#x5230;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>spectral convolution&#x4ECD;&#x6709;&#x4E00;&#x4E9B;&#x7F3A;&#x9677;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x5927;&#x56FE;&#xFF0C;&#x4ECE; L &#x8BA1;&#x7B97; Um &#x77E9;&#x9635;&#x662F;&#x5F88;&#x56F0;&#x96BE;&#x7684;</li>
+<li>Um &#x8BA1;&#x7B97;&#x77E9;&#x9635;&#x4E58;&#x6CD5;&#x590D;&#x6742;&#x5EA6;&#x5F88;&#x5927;</li>
+<li>&#x6240;&#x5B66;&#x4E60;&#x5230;&#x7684; filter &#x662F;&#x5C40;&#x9650;&#x4E8E;&#x8F93;&#x5165;&#x56FE;&#x7684;&#xFF0C;&#x5176;&#x4E0D;&#x80FD;&#x5F88;&#x597D;&#x7684;&#x8F6C;&#x79FB;&#x5230;&#x7ED3;&#x6784;&#x663E;&#x8457;&#x4E0D;&#x540C;&#x7684;&#x65B0;&#x56FE;</li>
+</ul>
+<h4><span id="global-propagation">Global Propagation</span></h4><p>&#x4E00;&#x79CD;&#x66F4;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x5927;&#x662F;&#x901A;&#x8FC7;pooling &#x8282;&#x70B9;&#x7684; embedding&#xFF0C;&#x518D;&#x4F7F;&#x7528;graph embedding &#x6765;&#x66F4;&#x65B0;&#x8282;&#x70B9; embedding&#x3002;&#x7136;&#x800C;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x5F80;&#x5F80;&#x5FFD;&#x7565;&#x4E86;spectral convolution&#x80FD;&#x6355;&#x6349;&#x7684;&#x56FE;&#x7684;&#x57FA;&#x7840;&#x62D3;&#x6251;&#x7ED3;&#x6784;&#x3002;</p>
+<h3><span id="gnn-parameters">GNN parameters</span></h3><p>&#x4E4B;&#x524D;&#x6240;&#x6709;&#x7684;embedding&#x8BA1;&#x7B97;&#x90FD;&#x662F;&#x53EF;&#x5FAE;&#x7684;&#xFF0C;&#x65E2;&#x53EF;&#x4EE5;&#x50CF;&#x6807;&#x51C6;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x4E00;&#x6837;&#xFF0C;&#x5B9A;&#x4E49;&#x635F;&#x5931;&#xFF0C;&#x8FDB;&#x884C;&#x7AEF;&#x5230;&#x7AEF;&#x7684;&#x8BAD;&#x7EC3;&#x3002;</p>
+<h4><span id="node-classification">node classification</span></h4><p>&#x5E38;&#x89C1;&#x7684;&#x8282;&#x70B9;&#x5206;&#x7C7B;&#x635F;&#x5931;&#x51FD;&#x6570;&#x8BBE;&#x8BA1;&#x5982;&#x4E0B;</p>
+<p><img src="/2024/07/10/PN12/image-20240711195346942.png" alt="image-20240711195346942"></p>
+<p>y^v,c &#x662F;&#x8282;&#x70B9; v &#x5C5E;&#x4E8E;&#x7C7B;&#x522B; c &#x7684;&#x9884;&#x6D4B;&#x6982;&#x7387;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;&#x534A;&#x76D1;&#x7763;&#xFF0C;&#x53EA;&#x6709;&#x90E8;&#x5206;&#x8282;&#x70B9;&#x6709;&#x6807;&#x7B7E;&#xFF0C;&#x5B9A;&#x4E49;&#x635F;&#x5931;</p>
+<p><img src="/2024/07/10/PN12/image-20240711200009467.png" alt="image-20240711200009467"></p>
+<p>&#x6211;&#x4EEC;&#x53EA;&#x5BF9; label &#x8282;&#x70B9;&#xFF08;labG&#xFF09;&#x8BA1;&#x7B97;&#x635F;&#x5931;&#x3002;</p>
+<h4><span id="graph-classification">graph classification</span></h4><p>&#x901A;&#x8FC7;&#x805A;&#x5408;&#x8282;&#x70B9;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x56FE;&#x8868;&#x793A;&#xFF0C;&#x8BE5;&#x8868;&#x793A;&#x53EF;&#x88AB;&#x7528;&#x4E8E;&#x4EFB;&#x4F55;&#x56FE;&#x7EA7;&#x522B;&#x7684;&#x4EFB;&#x52A1;&#x3002;&#xFF08;&#x4E0D;&#x5C40;&#x9650;&#x4E8E;&#x5206;&#x7C7B;&#xFF09;</p>
+<h4><span id="link-prediction">link prediction</span></h4><p> sampling &#x76F8;&#x90BB;/&#x4E0D;&#x76F8;&#x90BB;&#x8282;&#x70B9;&#xFF0C;&#x518D;&#x4F7F;&#x7528;&#x5411;&#x91CF;&#x5BF9;&#x6765;&#x9884;&#x6D4B;&#x8FB9;&#x7684;&#x5B58;&#x5728;&#x4E0E;&#x5426;&#x3002;&#x635F;&#x5931;&#x51FD;&#x6570;&#x8BBE;&#x8BA1;&#x5982;&#x4E0B;</p>
+<p><img src="/2024/07/10/PN12/image-20240711200419362.png" alt="image-20240711200419362"></p>
+<p>&#x5176;&#x4E2D; e_{vu} = 1&#x5F53;&#x4E14;&#x4EC5;&#x5F53;&#x8282;&#x70B9; v &#x548C; u &#x4E4B;&#x95F4;&#x6709;&#x8FB9;&#xFF0C;&#x5426;&#x5219;&#x4E3A;0&#x3002;</p>
+<h4><span id="node-clustering">node clustering</span></h4><p>&#x8282;&#x70B9;&#x805A;&#x7C7B;&#x2014;&#x2014;&#x901A;&#x8FC7;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x8282;&#x70B9;&#x8868;&#x793A;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x9884;&#x8BAD;&#x7EC3;&#x56FE;&#x3002;</p>
+<p>&#x81EA;&#x76D1;&#x7763;&#x65B9;&#x6CD5;&#xFF1A;&#x5F3A;&#x5236;&#x76F8;&#x90BB;&#x8282;&#x70B9;&#x83B7;&#x5F97;&#x76F8;&#x4F3C;&#x7684;&#x5D4C;&#x5165;&#x3002;</p>
+<h3><span id="x7ec8">&#x7EC8;</span></h3><p>&#x4E24;&#x7BC7;&#x7EFC;&#x8FF0;&#x63A8;&#x8350;</p>
+<p><strong>A Comprehensive Survey on Graph Neural Networks</strong></p>
+<p><strong>Graph Neural Networks: A Review of Methods and Applications</strong></p>
+<h4><span id="dropout">dropout</span></h4><p>&#x56FE;&#x4E2D;&#x7684;dropout&#x53EF;&#x76F4;&#x63A5;&#x5E94;&#x7528;&#x4E8E;&#x53C2;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x5C06;&#x77E9;&#x9635;&#x7684;&#x4E00;&#x884C;&#x7F6E;&#x96F6;&#x3002;</p>
+<p>&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x968F;&#x5373;&#x79FB;&#x9664;&#x56FE;&#x4E2D;&#x7684;&#x6574;&#x4E2A;&#x8FB9;&#x3002;&#x5982;DropEdge&#xFF08;DropEdge: Towards Deep Graph Convolutional Networks on Node Classification&#xFF09;</p>
+<h4><span id="other-graph">other graph</span></h4><p>&#x4E0A;&#x8FF0;&#x7684;&#x8BA8;&#x8BBA;&#x5C40;&#x9650;&#x4E8E;&#x65E0;&#x5411;&#x56FE;&#xFF0C;&#x7136;&#x800C;&#x5B9E;&#x9645;&#x4E0A;&#x7A7A;&#x95F4;&#x5377;&#x79EF;&#x7684;&#x53D8;&#x4F53;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6709;&#x5411;&#x56FE;&#xFF0C;&#x65F6;&#x5E8F;&#x56FE;&#xFF0C;&#x5F02;&#x6784;&#x56FE;&#x7B49;&#x7ED3;&#x6784;&#x3002;</p>
+<h4><span id="pooling">pooling</span></h4><p>&#x5C06;&#x8282;&#x70B9;&#x7279;&#x5F81;aggregate&#x6210;&#x56FE;&#x7279;&#x5F81;&#x9700;&#x8981;pooling&#x6280;&#x672F;&#xFF0C;&#x5373;</p>
+<p><img src="/2024/07/10/PN12/image-20240711202331812.png" alt="image-20240711202331812"></p>
+<p>&#x4E00;&#x4E9B;&#x6280;&#x672F;&#xFF1A;</p>
+<p>sortpool</p>
+<p>diffpool</p>
+<p>sagpool</p>
 
       
     </div>
